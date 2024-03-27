@@ -24,7 +24,11 @@ set -e
 
 
 bdir_VIS="make_mock_tidal_streams_VIS"
-bdir_NISP="make_mock_tidal_streams_NISP"
+bdir_NISP_Y="make_mock_tidal_streams_NISP_Y"
+bdir_NISP_J="make_mock_tidal_streams_NISP_J"
+bdir_NISP_H="make_mock_tidal_streams_NISP_H"
+
+
 bdir_check_cat="catalogs_for_checking"
 psf_VIS="psfs_connor/star_VIS_connor.fits" #../dario_2024/dario_IC342_VIS_star.fits"
 psf_NISP_Y="psfs_connor/star_NISP_Y_connor.fits" #"../dario_2024/dario_IC342_NISP_Y_star.fits"
@@ -47,7 +51,7 @@ bands="VIS NISP_Y NISP_J NISP_H"
 redshifts=(0.05 0.1 0.15 0.2 0.25 0.4 0.6 0.8 1) #range of possible redshifts
 phys_scales=(0.977 1.844 2.614 3.300 3.910 5.373 6.685 7.508 8.008) #range of physical scales at each redshift
 comparing_to_05=(1 0.530 0.347 0.296 0.250 0.182 0.146 0.130 0.122) #comparing physical scales to the one at z = 0.05
-number_galaxies=2 #number of systems (galaxy + tidal stream) to be created
+number_galaxies=1 #number of systems (galaxy + tidal stream) to be created
 
 #TIDAL STREAM LIMITS
 mag_stream_bright=19.8
@@ -106,7 +110,7 @@ do
                 zeropoint=$zeropoint_NISP
                 bckg_mag=$bckg_mag_NISP
                 psf=$psf_NISP_Y
-                bdir=$bdir_NISP
+                bdir=$bdir_NISP_Y
                 output_size=$output_size_NISP
                 x_cen=$x_cen_NISP
                 y_cen=$y_cen_NISP
@@ -114,9 +118,9 @@ do
                 "NISP_J")
                 pix_scale=$pix_scale_NISP
                 zeropoint=$zeropoint_NISP
-                bckg_mag=$bckg_mag_NISP
-                bdir=$bdir_NISP
+                bckg_mag=$bckg_mag_NISP               
                 psf=$psf_NISP_J
+                bdir=$bdir_NISP_J
                 output_size=$output_size_NISP
                 x_cen=$x_cen_NISP
                 y_cen=$y_cen_NISP
@@ -125,8 +129,8 @@ do
                 pix_scale=$pix_scale_NISP
                 zeropoint=$zeropoint_NISP
                 bckg_mag=$bckg_mag_NISP
-                bdir=$bdir_NISP
                 psf=$psf_NISP_H
+                bdir=$bdir_NISP_H
                 output_size=$output_size_NISP
                 x_cen=$x_cen_NISP
                 y_cen=$y_cen_NISP

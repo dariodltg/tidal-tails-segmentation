@@ -1,11 +1,11 @@
 import os
 import shutil
 
-paths_images_train = ["segmentation_training/galaxies_train_VIS/", "segmentation_training/galaxies_train_NISP_H/","segmentation_training/galaxies_train_NISP_J/","segmentation_training/galaxies_train_NISP_Y/"]
-paths_masks_train = ["segmentation_training/masks_train_VIS/", "segmentation_training/masks_train_NISP_H/", "segmentation_training/masks_train_NISP_J/", "segmentation_training/masks_train_NISP_Y/"]
+paths_images_train = ["../segmentation_training/galaxies_train_VIS/", "../segmentation_training/galaxies_train_NISP_H/","../segmentation_training/galaxies_train_NISP_J/","../segmentation_training/galaxies_train_NISP_Y/"]
+paths_masks_train = ["../segmentation_training/masks_train_VIS/", "../segmentation_training/masks_train_NISP_H/", "../segmentation_training/masks_train_NISP_J/", "../segmentation_training/masks_train_NISP_Y/"]
 
-paths_images_test = ["segmentation_training/galaxies_test_VIS/", "segmentation_training/galaxies_test_NISP_H/","segmentation_training/galaxies_test_NISP_J/","segmentation_training/galaxies_test_NISP_Y/"]
-paths_masks_test = ["segmentation_training/masks_test_VIS/", "segmentation_training/masks_test_NISP_H/", "segmentation_training/masks_test_NISP_J/", "segmentation_training/masks_test_NISP_Y/"]
+paths_images_test = ["../segmentation_training/galaxies_test_VIS/", "../segmentation_training/galaxies_test_NISP_H/","../segmentation_training/galaxies_test_NISP_J/","../segmentation_training/galaxies_test_NISP_Y/"]
+paths_masks_test = ["../segmentation_training/masks_test_VIS/", "../segmentation_training/masks_test_NISP_H/", "../segmentation_training/masks_test_NISP_J/", "../segmentation_training/masks_test_NISP_Y/"]
 
 
 split_ratio_test = 0.2

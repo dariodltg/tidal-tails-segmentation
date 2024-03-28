@@ -79,7 +79,9 @@ re_disk_max_ini=6 #[kpc]
 
 # Make the build directory (if it doens't exist).
 if ! [ -d "$bdir_VIS" ]; then mkdir "$bdir_VIS"; fi
-if ! [ -d "$bdir_NISP" ]; then mkdir "$bdir_NISP"; fi
+if ! [ -d "$bdir_NISP_Y" ]; then mkdir "$bdir_NISP_H"; fi
+if ! [ -d "$bdir_NISP_Y" ]; then mkdir "$bdir_NISP_J"; fi
+if ! [ -d "$bdir_NISP_Y" ]; then mkdir "$bdir_NISP_Y"; fi
 if ! [ -d "$bdir_check_cat" ]; then mkdir "$bdir_check_cat"; fi
 
 

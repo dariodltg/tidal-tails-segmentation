@@ -9,28 +9,39 @@ from astropy.io import fits
 size_VIS = 600
 size_NISP = 200
 redshift_variation_numbers= 10
-background_images_path = "backgrounds"
+background_images_path = "backgrounds/"
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
-output_VIS_folder= "segmentation_training/galaxies_train_VIS/"
-background_VIS_image = "IC342_VIS"
+output_VIS_folder= "../segmentation_training/galaxies_train_VIS/"
+background_VIS_image = "IC342_VIS.fits"
 
 input_NISP_folders = ["make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
-output_NISP_folders = ["segmentation_training/galaxies_train_NISP_H/","segmentation_training/galaxies_train_NISP_J/","segmentation_training/galaxies_train_NISP_Y/"]
-background_NISP_images = ["backgrounds/IC342_NISP_H","backgrounds/IC342_NISP_J","backgrounds/IC342_NISP_Y"]
+output_NISP_folders = ["../segmentation_training/galaxies_train_NISP_H/","../segmentation_training/galaxies_train_NISP_J/","../segmentation_training/galaxies_train_NISP_Y/"]
+background_NISP_images = ["IC342_NISP_H.fits","IC342_NISP_J.fits","IC342_NISP_Y.fits"]
 
 
-for output_folder in [output_VIS_folder, output_NISP_folders]:
+for output_folder in output_NISP_folders:
     if not os.path.exists(output_folder):
         os.mkdir(output_folder)
 
-# Open VIS background image
+if not os.path.exists(output_VIS_folder):
+    os.mkdir(output_VIS_folder)
 
-hdu_background_VIS = fits.open(background_images[0])
+
+# Open VIS background image
+hdu_background_VIS = fits.open(background_images_path+background_VIS_image)
 img_background_VIS = hdu_background_VIS[0].data
 hdr_backgground_VIS = hdu_background_VIS[0].header
 dim1_background_VIS = hdr_backgground_VIS["NAXIS1"]
 dim2_background_VIS = hdr_backgground_VIS["NAXIS2"]
+
+#Open NISP images
+hdu_background_NISP_H = fits.open(background_images_path+background_NISP_images[0])
+img_background_NISP_H = hdu_background_NISP_H[0].data
+hdu_background_NISP_J = fits.open(background_images_path+background_NISP_images[1])
+img_background_NISP_J = hdu_background_NISP_J[0].data
+hdu_background_NISP_Y = fits.open(background_images_path+background_NISP_images[2])
+img_background_NISP_Y = hdu_background_NISP_Y[0].data
 
 def split_list(list, sublist_size):
     return [list[i:i + sublist_size] for i in range(0, len(list), sublist_size)]
@@ -86,7 +97,9 @@ def insert_tidal_tails():
         # Second, the NISP filters
         x_center = int(x_center/3)
         y_center = int(y_center/3)
-
+        pix_in_x_halfsize = int(size_NISP/2)
+        pix_in_y_halfsize = int(size_NISP/2)
+        
         for input_file_nisp_h in input_file_nisp_h_sublist:
             hdu_sim = fits.open(input_file_nisp_h)
             img_sim = hdu_sim[1].data

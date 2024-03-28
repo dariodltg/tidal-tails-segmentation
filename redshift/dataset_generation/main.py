@@ -1,8 +1,8 @@
 import subprocess
-from redshift.dataset_generation.nan_to_black import nan_to_black
-from redshift.dataset_generation.mask_creation import create_masks
-from redshift.dataset_generation.inserting_tidal_tails import insert_tidal_tails
-from redshift.dataset_generation.datasets_splitting import split_datasets
+from nan_to_black import nan_to_black
+from mask_creation import create_masks
+from inserting_tidal_tails import insert_tidal_tails
+from datasets_splitting import split_datasets
 if __name__ == "__main__":
     #First, run GNUAstro bash script
 

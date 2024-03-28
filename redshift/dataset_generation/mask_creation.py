@@ -5,10 +5,10 @@ import os
 import cv2
 
 import numpy as np
-from astropy import fits
+from astropy.io import fits
 
 paths = ["make_mock_tidal_streams_VIS/", "make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
-paths_masks = ["segmentation_training/masks_train_VIS/", "segmentation_training/masks_train_NISP_H/", "segmentation_training/masks_train_NISP_J/", "segmentation_training/masks_train_NISP_Y/"]
+paths_masks = ["../segmentation_training/masks_train_VIS/", "../segmentation_training/masks_train_NISP_H/", "../segmentation_training/masks_train_NISP_J/", "../segmentation_training/masks_train_NISP_Y/"]
 size_VIS = 600
 size_NISP = 200
 

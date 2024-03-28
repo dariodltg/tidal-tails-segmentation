@@ -87,7 +87,7 @@ def insert_tidal_tails():
             img_sim = hdu_sim[1].data
             print("Inserting background image to: " + input_file_vis)
             #I create the cutout itself
-            new_filename = output_folder+input_file_vis[len(input_VIS_folder):-5]+"_in_"+background_VIS_image[:-5]+".fits"
+            new_filename = output_VIS_folder+input_file_vis[len(input_VIS_folder):-5]+"_in_"+background_VIS_image[:-5]+".fits"
             montage.mSubimage_pix(background_images_path+background_VIS_image,new_filename, x_center-pix_in_x_halfsize, y_center-pix_in_y_halfsize, hdu = 0, xpixsize = (pix_in_x_halfsize*2)-1, ypixsize = (pix_in_y_halfsize*2)-1 )
             hdu_cutout = fits.open(new_filename)
             img_cutout = hdu_cutout[0].data
@@ -105,7 +105,7 @@ def insert_tidal_tails():
             img_sim = hdu_sim[1].data
             print("Inserting background image to: " + input_file_nisp_h)
             #I create the cutout itself
-            new_filename = output_folder+input_file_nisp_h[len(input_NISP_folders[0]):-5]+"_in_"+background_NISP_images[0][:-5]+".fits"
+            new_filename = output_NISP_folders[0]+input_file_nisp_h[len(input_NISP_folders[0]):-5]+"_in_"+background_NISP_images[0][:-5]+".fits"
             montage.mSubimage_pix(background_images_path+background_NISP_images[0],new_filename, x_center-pix_in_x_halfsize, y_center-pix_in_y_halfsize, hdu = 0, xpixsize = (pix_in_x_halfsize*2)-1, ypixsize = (pix_in_y_halfsize*2)-1 )
             hdu_cutout = fits.open(new_filename)
             img_cutout = hdu_cutout[0].data
@@ -117,7 +117,7 @@ def insert_tidal_tails():
             img_sim = hdu_sim[1].data
             print("Inserting background image to: " + input_file_nisp_j)
             #I create the cutout itself
-            new_filename = output_folder+input_file_nisp_j[len(input_NISP_folders[1]):-5]+"_in_"+background_NISP_images[1][:-5]+".fits"
+            new_filename = output_NISP_folders[1]+input_file_nisp_j[len(input_NISP_folders[1]):-5]+"_in_"+background_NISP_images[1][:-5]+".fits"
             montage.mSubimage_pix(background_images_path+background_NISP_images[1],new_filename, x_center-pix_in_x_halfsize, y_center-pix_in_y_halfsize, hdu = 0, xpixsize = (pix_in_x_halfsize*2)-1, ypixsize = (pix_in_y_halfsize*2)-1 )
             hdu_cutout = fits.open(new_filename)
             img_cutout = hdu_cutout[0].data
@@ -129,7 +129,7 @@ def insert_tidal_tails():
             img_sim = hdu_sim[1].data
             print("Inserting background image to: " + input_file_nisp_y)
             #I create the cutout itself
-            new_filename = output_folder+input_file_nisp_y[len(input_NISP_folders[2]):-5]+"_in_"+background_NISP_images[2][:-5]+".fits"
+            new_filename = output_NISP_folders[2]+input_file_nisp_y[len(input_NISP_folders[2]):-5]+"_in_"+background_NISP_images[2][:-5]+".fits"
             montage.mSubimage_pix(background_images_path+background_NISP_images[2],new_filename, x_center-pix_in_x_halfsize, y_center-pix_in_y_halfsize, hdu = 0, xpixsize = (pix_in_x_halfsize*2)-1, ypixsize = (pix_in_y_halfsize*2)-1 )
             hdu_cutout = fits.open(new_filename)
             img_cutout = hdu_cutout[0].data

@@ -18,11 +18,10 @@ for path_mask in paths_masks:
 
 
 def get_galaxy_number(galaxy_name:str):
-    return galaxy_name.split('.')[0].split('_')[-2] 
+    return galaxy_name.split('/')[-1].split('_')[6]
 
 def get_galaxy_magnitude(galaxy_name:str):
-    pattern = re.compile(r'\d+\.\d+')
-    return pattern.findall(galaxy_name)[0]
+    return galaxy_name.split('/')[-1].split('_')[7]
 
 def create_masks():
     for path,path_masks in zip(paths, paths_masks):
@@ -30,6 +29,7 @@ def create_masks():
             print("Creating mask for file: "+file)
             galaxy_number = get_galaxy_number(file)
             galaxy_magnitude = get_galaxy_magnitude(file)
+
             with fits.open(file) as hdul:
                 fits_data = hdul[1].data
                 if path == "make_mock_tidal_streams_VIS/":

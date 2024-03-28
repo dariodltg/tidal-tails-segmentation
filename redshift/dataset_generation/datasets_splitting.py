@@ -7,6 +7,13 @@ paths_masks_train = ["../segmentation_training/masks_train_VIS/", "../segmentati
 paths_images_test = ["../segmentation_training/galaxies_test_VIS/", "../segmentation_training/galaxies_test_NISP_H/","../segmentation_training/galaxies_test_NISP_J/","../segmentation_training/galaxies_test_NISP_Y/"]
 paths_masks_test = ["../segmentation_training/masks_test_VIS/", "../segmentation_training/masks_test_NISP_H/", "../segmentation_training/masks_test_NISP_J/", "../segmentation_training/masks_test_NISP_Y/"]
 
+for path_images_test in paths_images_test:
+    if not os.path.exists(path_images_test):
+        os.mkdir(path_images_test)
+
+for path_masks_test in paths_masks_test:
+    if not os.path.exists(path_masks_test):
+        os.mkdir(path_masks_test)       
 
 split_ratio_test = 0.2
 

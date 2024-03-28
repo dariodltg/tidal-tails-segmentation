@@ -11,6 +11,6 @@ def nan_to_black():
         print("Processing nan pixels to black in path" + path)
         for file in glob.glob(path+"galaxy_and_stream_convolved*"):
             with fits.open(file, mode="update") as hdul:  # Open fits file
-                data = hdul[0].data
+                data = hdul[1].data
                 data[np.isnan(data)] = 0  # Replace nans with zeros
                 hdul.flush()  # Save changes

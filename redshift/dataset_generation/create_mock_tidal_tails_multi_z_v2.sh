@@ -51,7 +51,7 @@ bands="VIS NISP_Y NISP_J NISP_H"
 redshifts=(0.05 0.1 0.15 0.2 0.25 0.4 0.6 0.8 1) #range of possible redshifts
 phys_scales=(0.977 1.844 2.614 3.300 3.910 5.373 6.685 7.508 8.008) #range of physical scales at each redshift
 comparing_to_05=(1 0.530 0.347 0.296 0.250 0.182 0.146 0.130 0.122) #comparing physical scales to the one at z = 0.05
-number_galaxies=100 #number of systems (galaxy + tidal stream) to be created
+number_galaxies=1000 #number of systems (galaxy + tidal stream) to be created
 
 #TIDAL STREAM LIMITS
 mag_stream_bright=19.8

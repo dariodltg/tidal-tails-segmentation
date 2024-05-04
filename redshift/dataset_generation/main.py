@@ -13,19 +13,19 @@ def run_gnu_astro_script():
 if __name__ == "__main__":
 
     #First, run GNUAstro bash script
-    run_gnu_astro_script()
+    #run_gnu_astro_script()
 
     #Second, run nan to black python script
-    nan_to_black()
+    #nan_to_black()
 
     #Third, generate labels with python
-    create_masks()
+    #create_masks()
 
     #Fourth, run inserting tidal tails scripts
-    insert_tidal_tails()
+    #insert_tidal_tails()
 
     #Fifth, divide datasets in train and test
-    split_datasets()
+    #split_datasets()
 
-    #delete_nans()
+    delete_nans()
 

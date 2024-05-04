@@ -164,4 +164,14 @@ cython_debug/
 **/galaxies_test*/
 **/masks_train*/
 **/masks_test*/
+**/masks_*/
 **/catalogs_for_checking/
+nohup.out
+redshift/segmentation_training/NISP_H_1000imgs
+redshift/segmentation_training/NISP_H_1000imgs_v2
+redshift/segmentation_training/NISP_J_1000imgs
+redshift/segmentation_training/NISP_J_1000imgs_v2
+redshift/segmentation_training/NISP_Y_1000imgs
+redshift/segmentation_training/NISP_Y_1000imgs_v2
+redshift/segmentation_training/VIS_1000imgs
+redshift/segmentation_training/VIS_1000imgs_v2

@@ -5,7 +5,7 @@ import copy
 import os
 
 paths = [
-         "../segmentation_training/galaxies_test_VIS/"]
+         "../segmentation_training/v2/galaxies_train_VIS/"]
 
 
 def delete_nans():
@@ -16,7 +16,7 @@ def delete_nans():
                 data = hdul[0].data.astype(np.float32)
                 if(np.isnan(data).any()):
                     print("Nans in file: "+file)
-                    #os.remove(file)
+                    os.remove(file)
                 if(np.isinf(data).any()):
                     print("Infs in file: "+file)
             

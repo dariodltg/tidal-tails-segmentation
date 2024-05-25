@@ -12,11 +12,11 @@ redshift_variation_numbers= 10
 background_images_path = "backgrounds/"
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
-output_VIS_folder= "../segmentation_training/galaxies_train_VIS/"
+output_VIS_folder= "../segmentation_training/v2/galaxies_train_VIS/"
 background_VIS_image = "IC342_VIS.fits"
 
 input_NISP_folders = ["make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
-output_NISP_folders = ["../segmentation_training/galaxies_train_NISP_H/","../segmentation_training/galaxies_train_NISP_J/","../segmentation_training/galaxies_train_NISP_Y/"]
+output_NISP_folders = ["../segmentation_training/v2/galaxies_train_NISP_H/","../segmentation_training/v2/galaxies_train_NISP_J/","../segmentation_training/v2/galaxies_train_NISP_Y/"]
 background_NISP_images = ["IC342_NISP_H.fits","IC342_NISP_J.fits","IC342_NISP_Y.fits"]
 
 
@@ -50,15 +50,19 @@ def split_list(list, sublist_size):
 def insert_tidal_tails():
     
     input_files_vis = glob.glob(input_VIS_folder+"galaxy_and_stream_convolved_*.fits")
+    input_files_vis.sort()
     input_files_vis_splitted_by_redshift = split_list(input_files_vis, redshift_variation_numbers)
 
     input_files_nisp_h = glob.glob(input_NISP_folders[0]+"galaxy_and_stream_convolved_*.fits")
+    input_files_nisp_h.sort()
     input_files_nisp_h_splitted_by_redshift = split_list(input_files_nisp_h, redshift_variation_numbers)
 
     input_files_nisp_j = glob.glob(input_NISP_folders[1]+"galaxy_and_stream_convolved_*.fits")
+    input_files_nisp_j.sort()
     input_files_nisp_j_splitted_by_redshift = split_list(input_files_nisp_j, redshift_variation_numbers)
 
     input_files_nisp_y = glob.glob(input_NISP_folders[2]+"galaxy_and_stream_convolved_*.fits")
+    input_files_nisp_y.sort()
     input_files_nisp_y_splitted_by_redshift = split_list(input_files_nisp_y, redshift_variation_numbers)
 
     

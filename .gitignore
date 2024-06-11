@@ -185,3 +185,12 @@ redshift/segmentation_training/v1/VIS_1000imgs
 redshift/segmentation_training/v1/VIS_1000imgs_v2
 redshift/segmentation_training/v2/VIS_1000imgs_v2
 redshift/segmentation_training/v2/VIS_1000imgs_v2_efb0
+redshift/segmentation_training/v2/NISP_H_1000imgs_v2
+redshift/segmentation_training/v2/NISP_J_1000imgs_v2
+redshift/segmentation_training/v2/NISP_Y_1000imgs_v2
+redshift/segmentation_training/v2/images_paper*/*
+redshift/segmentation_training/v3/images_paper*/*
+redshift/segmentation_training/v3/VIS_1000imgs_v2
+redshift/segmentation_training/v3/NISP_H_1000imgs_v2
+redshift/segmentation_training/v3/NISP_J_1000imgs_v2
+redshift/segmentation_training/v3/NISP_Y_1000imgs_v2

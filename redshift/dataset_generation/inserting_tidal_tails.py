@@ -8,15 +8,15 @@ from astropy.io import fits
 
 size_VIS = 600
 size_NISP = 200
-redshift_variation_numbers= 10
+redshift_variation_numbers= 9
 background_images_path = "backgrounds/"
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
-output_VIS_folder= "../segmentation_training/v2/galaxies_train_VIS/"
+output_VIS_folder= "../segmentation_training/v3/galaxies_train_VIS/"
 background_VIS_image = "IC342_VIS.fits"
 
 input_NISP_folders = ["make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
-output_NISP_folders = ["../segmentation_training/v2/galaxies_train_NISP_H/","../segmentation_training/v2/galaxies_train_NISP_J/","../segmentation_training/v2/galaxies_train_NISP_Y/"]
+output_NISP_folders = ["../segmentation_training/v3/galaxies_train_NISP_H/","../segmentation_training/v3/galaxies_train_NISP_J/","../segmentation_training/v3/galaxies_train_NISP_Y/"]
 background_NISP_images = ["IC342_NISP_H.fits","IC342_NISP_J.fits","IC342_NISP_Y.fits"]
 
 
@@ -92,7 +92,7 @@ def insert_tidal_tails():
             print("Inserting background image to: " + input_file_vis)
             #I create the cutout itself
             new_filename = output_VIS_folder+input_file_vis[len(input_VIS_folder):-5]+"_in_"+background_VIS_image[:-5]+".fits"
-            montage.mSubimage_pix(background_images_path+background_VIS_image,new_filename, x_center-pix_in_x_halfsize, y_center-pix_in_y_halfsize, hdu = 0, xpixsize = (pix_in_x_halfsize*2)-1, ypixsize = (pix_in_y_halfsize*2)-1 )
+            montage.mSubimage_pix(background_images_path+background_VIS_image, new_filename, x_center-pix_in_x_halfsize, y_center-pix_in_y_halfsize, hdu = 0, xpixsize = (pix_in_x_halfsize*2)-1, ypixsize = (pix_in_y_halfsize*2)-1 )
             hdu_cutout = fits.open(new_filename)
             img_cutout = hdu_cutout[0].data
             hdr_cutout = hdu_cutout[0].header
@@ -139,3 +139,4 @@ def insert_tidal_tails():
             img_cutout = hdu_cutout[0].data
             hdr_cutout = hdu_cutout[0].header
             fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+        

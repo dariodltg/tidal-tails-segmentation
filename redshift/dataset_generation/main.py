@@ -25,6 +25,6 @@ if __name__ == "__main__":
     #insert_tidal_tails()
 
     #Fifth, divide datasets in train and test
-    #split_datasets()
+    split_datasets()
 
     delete_nans()

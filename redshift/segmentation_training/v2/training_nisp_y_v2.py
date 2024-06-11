@@ -290,12 +290,13 @@ for epoch in range(hiperparametros['epocas']):
     if (loss_medio_valid/pasos_valid) < mejor_loss:
         mejor_modelo = copy.deepcopy(unet)
         mejor_loss = loss_medio_valid/pasos_valid
+        torch.save(mejor_modelo.state_dict(), hiperparametros['nombre_mejor_modelo_a_guardar'])
     unet.train()
 print('\n\nFinished Training')
 print('Mejor loss sobre validación alcanzado:', mejor_loss)
 
 # %%
-torch.save(mejor_modelo.state_dict(), hiperparametros['nombre_mejor_modelo_a_guardar'])
+
 
 # %% [markdown]
 # ## Comprobar resultados con el conjunto de train

@@ -1,3 +1,4 @@
+from collections import defaultdict
 import glob
 import numpy as np
 import montage_wrapper as montage
@@ -5,10 +6,8 @@ import os.path
 from astropy.io import fits
 
 
-
 size_VIS = 600
 size_NISP = 200
-redshift_variation_numbers= 9
 background_images_path = "backgrounds/"
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
@@ -18,7 +17,6 @@ background_VIS_image = "IC342_VIS.fits"
 input_NISP_folders = ["make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
 output_NISP_folders = ["../segmentation_training/v3/galaxies_train_NISP_H/","../segmentation_training/v3/galaxies_train_NISP_J/","../segmentation_training/v3/galaxies_train_NISP_Y/"]
 background_NISP_images = ["IC342_NISP_H.fits","IC342_NISP_J.fits","IC342_NISP_Y.fits"]
-
 
 for output_folder in output_NISP_folders:
     if not os.path.exists(output_folder):
@@ -43,27 +41,40 @@ img_background_NISP_J = hdu_background_NISP_J[0].data
 hdu_background_NISP_Y = fits.open(background_images_path+background_NISP_images[2])
 img_background_NISP_Y = hdu_background_NISP_Y[0].data
 
-def split_list(list, sublist_size):
-    return [list[i:i + sublist_size] for i in range(0, len(list), sublist_size)]
+def split_list(file_list):
+    grouped_files = defaultdict(list)
+
+    # Procesar cada archivo y agruparlos
+    for file in file_list:
+        # Extraer el número que sigue a "galaxy_and_stream_convolved_"
+        parts = file.split('/')[1].split('_')
+        number = parts[4]  # El número está en la posición 4 después de dividir por '_'
+        
+        # Añadir el archivo a la lista correspondiente en el diccionario
+        grouped_files[number].append(file)
+
+    # Convertir el diccionario a una lista de listas
+    grouped_files_list = list(grouped_files.values())
+    return grouped_files_list
 
 
 def insert_tidal_tails():
     
     input_files_vis = glob.glob(input_VIS_folder+"galaxy_and_stream_convolved_*.fits")
     input_files_vis.sort()
-    input_files_vis_splitted_by_redshift = split_list(input_files_vis, redshift_variation_numbers)
+    input_files_vis_splitted_by_redshift = split_list(input_files_vis)
 
     input_files_nisp_h = glob.glob(input_NISP_folders[0]+"galaxy_and_stream_convolved_*.fits")
     input_files_nisp_h.sort()
-    input_files_nisp_h_splitted_by_redshift = split_list(input_files_nisp_h, redshift_variation_numbers)
+    input_files_nisp_h_splitted_by_redshift = split_list(input_files_nisp_h)
 
     input_files_nisp_j = glob.glob(input_NISP_folders[1]+"galaxy_and_stream_convolved_*.fits")
     input_files_nisp_j.sort()
-    input_files_nisp_j_splitted_by_redshift = split_list(input_files_nisp_j, redshift_variation_numbers)
+    input_files_nisp_j_splitted_by_redshift = split_list(input_files_nisp_j)
 
     input_files_nisp_y = glob.glob(input_NISP_folders[2]+"galaxy_and_stream_convolved_*.fits")
     input_files_nisp_y.sort()
-    input_files_nisp_y_splitted_by_redshift = split_list(input_files_nisp_y, redshift_variation_numbers)
+    input_files_nisp_y_splitted_by_redshift = split_list(input_files_nisp_y)
 
     
     for input_file_vis_sublist,input_file_nisp_h_sublist,input_file_nisp_j_sublist, input_file_nisp_y_sublist in zip(input_files_vis_splitted_by_redshift, input_files_nisp_h_splitted_by_redshift, input_files_nisp_j_splitted_by_redshift, input_files_nisp_y_splitted_by_redshift):

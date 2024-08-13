@@ -54,25 +54,25 @@ comparing_to_05=(1 0.530 0.347 0.296 0.250 0.182 0.146 0.130 0.122) #comparing p
 number_galaxies=1000 #number of systems (galaxy + tidal stream) to be created
 
 #TIDAL STREAM LIMITS
-mag_stream_bright=19.8
-mag_stream_faint=20.2
-min_rr_stream=15 #[pix in VIS]
+mag_stream_bright=19.5
+mag_stream_faint=20.5
+min_rr_stream=5 #[pix in VIS]
 max_rr_stream=120 #[pix in VIS]
 min_width_stream=15 #[pix in VIS], check also min_rr_stream 
 max_width_stream=100 #[pix in VIS] 
 min_azimuthal_width=45 #degrees
-max_azimuthal_width=270 #degrees
+max_azimuthal_width=180 #degrees
 sigma_over_noise=1.2
 
 #BULGE LIMITS
-mag_bulge_bright_ini=19
+mag_bulge_bright_ini=17
 mag_bulge_faint_ini=21
 re_bulge_min_ini=1 #[kpc]
 re_bulge_max_ini=6 #[kpc]
 
 #DISK_LIMITS
 mag_disk_bright_ini=17
-mag_disk_faint_ini=19
+mag_disk_faint_ini=21
 re_disk_min_ini=2 #[kpc]
 re_disk_max_ini=6 #[kpc]
 

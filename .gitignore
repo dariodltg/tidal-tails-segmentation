@@ -194,3 +194,5 @@ redshift/segmentation_training/v3/VIS_1000imgs_v2
 redshift/segmentation_training/v3/NISP_H_1000imgs_v2
 redshift/segmentation_training/v3/NISP_J_1000imgs_v2
 redshift/segmentation_training/v3/NISP_Y_1000imgs_v2
+backgrounds_mathias/
+backgrounds_mathias_without_pedestal/

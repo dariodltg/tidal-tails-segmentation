@@ -196,3 +196,10 @@ redshift/segmentation_training/v3/NISP_J_1000imgs_v2
 redshift/segmentation_training/v3/NISP_Y_1000imgs_v2
 backgrounds_mathias/
 backgrounds_mathias_without_pedestal/
+redshift/segmentation_training/v4/.cometml-runs/9f1a264c608e4ee683618fac4f51a90e-MvlrkQ.zip
+redshift/segmentation_training/v4/.cometml-runs/3b33272739174f738f9645760ac64abf-Kzunvs.zip
+redshift/segmentation_training/v4/.cometml-runs/ccfabc4cb0a54c69aa234a9b02d6c322-UYPNtM.zip
+redshift/segmentation_training/v4/VIS_1000imgs_v4
+redshift/segmentation_training/v4/NISP_H_1000imgs_v4
+redshift/segmentation_training/v4/NISP_J_1000imgs_v4
+redshift/segmentation_training/v4/NISP_Y_1000imgs_v4

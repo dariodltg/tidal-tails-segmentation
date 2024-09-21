@@ -5,7 +5,8 @@ import copy
 import os
 
 paths = [
-         "../segmentation_training/v3/galaxies_train_VIS/"]
+         "../segmentation_training/v4/galaxies_train_VIS/","../segmentation_training/v4/galaxies_train_NISP_H/","../segmentation_training/v4/galaxies_train_NISP_J/","../segmentation_training/v4/galaxies_train_NISP_Y/",
+         "../segmentation_training/v4/galaxies_test_VIS/","../segmentation_training/v4/galaxies_test_NISP_H/","../segmentation_training/v4/galaxies_test_NISP_J/","../segmentation_training/v4/galaxies_test_NISP_Y/"]
 
 
 def delete_nans():

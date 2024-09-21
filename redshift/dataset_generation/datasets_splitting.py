@@ -1,9 +1,9 @@
 import os
 import shutil
 
-paths_images_train = ["../segmentation_training/v3/galaxies_train_VIS/", "../segmentation_training/v3/galaxies_train_NISP_H/","../segmentation_training/v3/galaxies_train_NISP_J/","../segmentation_training/v3/galaxies_train_NISP_Y/"]
+paths_images_train = ["../segmentation_training/v4/galaxies_train_VIS/", "../segmentation_training/v4/galaxies_train_NISP_H/","../segmentation_training/v4/galaxies_train_NISP_J/","../segmentation_training/v4/galaxies_train_NISP_Y/"]
 
-paths_images_test = ["../segmentation_training/v3/galaxies_test_VIS/", "../segmentation_training/v3/galaxies_test_NISP_H/","../segmentation_training/v3/galaxies_test_NISP_J/","../segmentation_training/v3/galaxies_test_NISP_Y/"]
+paths_images_test = ["../segmentation_training/v4/galaxies_test_VIS/", "../segmentation_training/v4/galaxies_test_NISP_H/","../segmentation_training/v4/galaxies_test_NISP_J/","../segmentation_training/v4/galaxies_test_NISP_Y/"]
 
 for path_images_test in paths_images_test:
     if not os.path.exists(path_images_test):

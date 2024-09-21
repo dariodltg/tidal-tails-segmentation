@@ -22,7 +22,7 @@ if __name__ == "__main__":
     #create_masks()
 
     #Fourth, run inserting tidal tails scripts
-    #insert_tidal_tails()
+    insert_tidal_tails()
 
     #Fifth, divide datasets in train and test
     split_datasets()

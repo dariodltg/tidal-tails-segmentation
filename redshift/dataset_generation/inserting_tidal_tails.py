@@ -8,15 +8,17 @@ from astropy.io import fits
 
 size_VIS = 600
 size_NISP = 200
-background_images_path = "backgrounds/"
+background_images_path = "backgrounds_mathias_without_pedestal/"
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
-output_VIS_folder= "../segmentation_training/v3/galaxies_train_VIS/"
-background_VIS_image = "IC342_VIS.fits"
+output_VIS_folder= "../segmentation_training/v4/galaxies_train_VIS/"
+background_VIS_image = "EUC_MER_BGSUB-MOSAIC-VIS_TILE101019127-2ADA59_20240112T193045.603369Z_00.00.fits"
 
 input_NISP_folders = ["make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
-output_NISP_folders = ["../segmentation_training/v3/galaxies_train_NISP_H/","../segmentation_training/v3/galaxies_train_NISP_J/","../segmentation_training/v3/galaxies_train_NISP_Y/"]
-background_NISP_images = ["IC342_NISP_H.fits","IC342_NISP_J.fits","IC342_NISP_Y.fits"]
+output_NISP_folders = ["../segmentation_training/v4/galaxies_train_NISP_H/","../segmentation_training/v4/galaxies_train_NISP_J/","../segmentation_training/v4/galaxies_train_NISP_Y/"]
+background_NISP_images = ["EUC_MER_BGSUB-MOSAIC-NIR-H_TILE101019127-6715A1_20240112T190340.364333Z_00.00.fits",
+                          "EUC_MER_BGSUB-MOSAIC-NIR-J_TILE101019127-ECE21F_20240112T185713.437206Z_00.00.fits",
+                          "EUC_MER_BGSUB-MOSAIC-NIR-Y_TILE101019127-CFC333_20240112T190219.154592Z_00.00.fits"]
 
 for output_folder in output_NISP_folders:
     if not os.path.exists(output_folder):
@@ -90,7 +92,7 @@ def insert_tidal_tails():
             pix_in_y_halfsize = int(size_VIS/2)
             cutout = img_background_VIS[y_center-pix_in_y_halfsize:y_center+pix_in_y_halfsize, x_center-pix_in_x_halfsize:x_center+pix_in_x_halfsize]
 
-            #I will accept this new image if less than 10% of the pixels are zeros and the dimensions are all right
+            #I will accept this new image if less than 10% (ESTO HAY QUE CAMBIARLO PORQUE LE HEMOS QUITADO EL PEDESTAL) of the pixels are zeros and the dimensions are all right 
             if np.count_nonzero(cutout == 0) >= (size_VIS*size_VIS)/10 or cutout.shape[0] != size_VIS or cutout.shape[1] != size_VIS or np.isnan(cutout).any():
                 flag_cutted = False
             else:

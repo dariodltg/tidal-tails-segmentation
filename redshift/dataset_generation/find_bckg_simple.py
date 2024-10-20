@@ -72,27 +72,27 @@ if os.path.exists(path_to_output) == False:
 hdu_opt = fits.open(path_to_input+imageV1)
 img_opt = hdu_opt[3].data
 hdr_opt = hdu_opt[3].header
-fits.writeto(path_input_single_ext+"imageV1.fits",img_opt,hdr_opt,overwrite=True)
+#fits.writeto(path_input_single_ext+"imageV1.fits",img_opt,hdr_opt,overwrite=True)
     
 hdu_opt = fits.open(path_to_input+imageV2)
 img_opt = hdu_opt[4].data
 hdr_opt = hdu_opt[4].header
-fits.writeto(path_input_single_ext+"imageV2.fits",img_opt,hdr_opt,overwrite=True)
+#fits.writeto(path_input_single_ext+"imageV2.fits",img_opt,hdr_opt,overwrite=True)
     
 hdu_nir = fits.open(path_to_input+imageY)
 img_nir = hdu_nir[13].data
 hdr_nir = hdu_nir[13].header
-fits.writeto(path_input_single_ext+"imageY.fits",img_nir,hdr_nir,overwrite=True)
+#fits.writeto(path_input_single_ext+"imageY.fits",img_nir,hdr_nir,overwrite=True)
 
 hdu_nir = fits.open(path_to_input+imageJ)
 img_nir = hdu_nir[13].data
 hdr_nir = hdu_nir[13].header
-fits.writeto(path_input_single_ext+"imageJ.fits",img_nir,hdr_nir,overwrite=True)
+#fits.writeto(path_input_single_ext+"imageJ.fits",img_nir,hdr_nir,overwrite=True)
 
 hdu_nir = fits.open(path_to_input+imageH)
 img_nir = hdu_nir[13].data
 hdr_nir = hdu_nir[13].header
-fits.writeto(path_input_single_ext+"imageH.fits",img_nir,hdr_nir,overwrite=True)
+#fits.writeto(path_input_single_ext+"imageH.fits",img_nir,hdr_nir,overwrite=True)
 
 
 cont_gal = 0

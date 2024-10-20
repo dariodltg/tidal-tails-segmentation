@@ -74,53 +74,65 @@ def insert_tidal_tails():
 
         # First the VIS filter
         for input_file_vis in input_file_vis_sublist:
-            hdu_sim = fits.open(input_file_vis)
-            img_sim = hdu_sim[1].data
-            print("Inserting background image to: " + input_file_vis)
-            #I create the cutout itself
-            new_filename = output_VIS_folder+input_file_vis[len(input_VIS_folder):-5]+"_in_background.fits"
-            montage.mSubimage_pix(vis_background_image, new_filename, 0, 0, hdu = 0, xpixsize = size_VIS, ypixsize = size_VIS )            
-            hdu_cutout = fits.open(new_filename)
-            img_cutout = hdu_cutout[0].data
-            hdr_cutout = hdu_cutout[0].header
-            fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+            try:
+                hdu_sim = fits.open(input_file_vis)
+                img_sim = hdu_sim[1].data
+                print("Inserting background image to: " + input_file_vis)
+                #I create the cutout itself
+                new_filename = output_VIS_folder+input_file_vis[len(input_VIS_folder):-5]+"_in_background"+str(index)+".fits"
+                montage.mSubimage_pix(vis_background_image, new_filename, 0, 0, hdu = 0, xpixsize = size_VIS, ypixsize = size_VIS )            
+                hdu_cutout = fits.open(new_filename)
+                img_cutout = hdu_cutout[0].data
+                hdr_cutout = hdu_cutout[0].header
+                fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+            except Exception as ex:
+                print(ex)
         
         for input_file_nisp_h in input_file_nisp_h_sublist:
-            hdu_sim = fits.open(input_file_nisp_h)
-            img_sim = hdu_sim[1].data
-            print("Inserting background image to: " + input_file_nisp_h)
-            #I create the cutout itself
-            new_filename = output_NISP_folders[0]+input_file_nisp_h[len(input_NISP_folders[0]):-5]+"_in_background.fits"
-            montage.mSubimage_pix(nisp_h_background_image,new_filename, 0, 0, hdu = 0, xpixsize = size_NISP, ypixsize = size_NISP )
-            hdu_cutout = fits.open(new_filename)
-            img_cutout = hdu_cutout[0].data
-            hdr_cutout = hdu_cutout[0].header
-            fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+            try:
+                hdu_sim = fits.open(input_file_nisp_h)
+                img_sim = hdu_sim[1].data
+                print("Inserting background image to: " + input_file_nisp_h)
+                #I create the cutout itself
+                new_filename = output_NISP_folders[0]+input_file_nisp_h[len(input_NISP_folders[0]):-5]+"_in_background"+str(index)+".fits"
+                montage.mSubimage_pix(nisp_h_background_image,new_filename, 0, 0, hdu = 0, xpixsize = size_NISP, ypixsize = size_NISP )
+                hdu_cutout = fits.open(new_filename)
+                img_cutout = hdu_cutout[0].data
+                hdr_cutout = hdu_cutout[0].header
+                fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+            except Exception as ex:
+                print(ex)
 
         for input_file_nisp_j in input_file_nisp_j_sublist:
-            hdu_sim = fits.open(input_file_nisp_j)
-            img_sim = hdu_sim[1].data
-            print("Inserting background image to: " + input_file_nisp_j)
-            #I create the cutout itself
-            new_filename = output_NISP_folders[1]+input_file_nisp_j[len(input_NISP_folders[1]):-5]+"_in_background.fits"
-            montage.mSubimage_pix(nisp_j_background_image,new_filename, 0, 0, hdu = 0, xpixsize = size_NISP, ypixsize = size_NISP )
-            hdu_cutout = fits.open(new_filename)
-            img_cutout = hdu_cutout[0].data
-            hdr_cutout = hdu_cutout[0].header
-            fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+            try:
+                hdu_sim = fits.open(input_file_nisp_j)
+                img_sim = hdu_sim[1].data
+                print("Inserting background image to: " + input_file_nisp_j)
+                #I create the cutout itself
+                new_filename = output_NISP_folders[1]+input_file_nisp_j[len(input_NISP_folders[1]):-5]+"_in_background"+str(index)+".fits"
+                montage.mSubimage_pix(nisp_j_background_image,new_filename, 0, 0, hdu = 0, xpixsize = size_NISP, ypixsize = size_NISP )
+                hdu_cutout = fits.open(new_filename)
+                img_cutout = hdu_cutout[0].data
+                hdr_cutout = hdu_cutout[0].header
+                fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+            except Exception as ex:
+                print(ex)
 
         for input_file_nisp_y in input_file_nisp_y_sublist:
-            hdu_sim = fits.open(input_file_nisp_y)
-            img_sim = hdu_sim[1].data
-            print("Inserting background image to: " + input_file_nisp_y)
-            #I create the cutout itself
-            new_filename = output_NISP_folders[2]+input_file_nisp_y[len(input_NISP_folders[2]):-5]+"_in_background.fits"
-            montage.mSubimage_pix(nisp_y_background_image,new_filename, 0, 0, hdu = 0, xpixsize = size_NISP, ypixsize = size_NISP )
-            hdu_cutout = fits.open(new_filename)
-            img_cutout = hdu_cutout[0].data
-            hdr_cutout = hdu_cutout[0].header
-            fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+            try:
+                hdu_sim = fits.open(input_file_nisp_y)
+                img_sim = hdu_sim[1].data
+                print("Inserting background image to: " + input_file_nisp_y)
+                #I create the cutout itself
+                new_filename = output_NISP_folders[2]+input_file_nisp_y[len(input_NISP_folders[2]):-5]+"_in_background"+str(index)+".fits"
+                montage.mSubimage_pix(nisp_y_background_image,new_filename, 0, 0, hdu = 0, xpixsize = size_NISP, ypixsize = size_NISP )
+                hdu_cutout = fits.open(new_filename)
+                img_cutout = hdu_cutout[0].data
+                hdr_cutout = hdu_cutout[0].header
+                fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
+            except Exception as ex:
+                print(ex)
             
-    index = index+1
+        index = index+1
     
         

@@ -38,7 +38,7 @@ hiperparametros = {'nombre_notebook': 'Training_VIS_1000imgs_v5.ipynb',
                     'lr' : 1e-3,
                     'regularizacion_ridge' : 1e-5,
                     'torch seed model weights' : 10,
-                    'batch_size' : 8,
+                    'batch_size' : 4,
                     'loss' : torch.nn.CrossEntropyLoss()}
 device = hiperparametros['device']
 
@@ -215,7 +215,7 @@ summary(unet, (1, 608, 608))
 
 # %%
 #Comprobamos que hemos construido la arquitectura de la red correctamente cargando una imagen del dataset
-input_item, label_item = train_dataset.__getitem__(0)
+input_item, label_item = train_dataset.__getitem__(35)
 input_item = input_item.reshape((1,1,hiperparametros['ancho_imagen_deseado'],hiperparametros['alto_imagen_deseado']))
 label_item = label_item.reshape((1,1,hiperparametros['ancho_imagen_deseado'],hiperparametros['alto_imagen_deseado']))
 output_item = unet(input_item.to(device)).cpu().detach().squeeze()

@@ -30,10 +30,10 @@ bdir_NISP_H="make_mock_tidal_streams_NISP_H"
 
 
 bdir_check_cat="catalogs_for_checking"
-psf_VIS="psfs_connor/star_VIS_connor.fits" #../dario_2024/dario_IC342_VIS_star.fits"
-psf_NISP_Y="psfs_connor/star_NISP_Y_connor.fits" #"../dario_2024/dario_IC342_NISP_Y_star.fits"
-psf_NISP_J="psfs_connor/star_NISP_J_connor.fits" #"../dario_2024/dario_IC342_NISP_J_star.fits"
-psf_NISP_H="psfs_connor/star_NISP_H_connor.fits" #"../dario_2024/dario_IC342_NISP_H_star.fits"
+psf_VIS="psfs_connor/star_VIS_I_connor_asOf23oct24.fits" #../dario_2024/dario_IC342_VIS_star.fits"
+psf_NISP_Y="psfs_connor/star_NISP_Y_connor_asOf23oct24.fits" #"../dario_2024/dario_IC342_NISP_Y_star.fits"
+psf_NISP_J="psfs_connor/star_NISP_J_connor_asOf23oct24.fits" #"../dario_2024/dario_IC342_NISP_J_star.fits"
+psf_NISP_H="psfs_connor/star_NISP_H_connor_asOf23oct24.fits" #"../dario_2024/dario_IC342_NISP_H_star.fits"
 flag_gaussian_noise="False" #create or not images adding gaussian noise
 output_size_VIS=600 #[pix in VIS]
 output_size_NISP=200 #[pix in NISP]

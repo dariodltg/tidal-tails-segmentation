@@ -10,12 +10,12 @@ size_VIS = 600
 size_NISP = 200
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
-output_VIS_folder= "../segmentation_training/v5/galaxies_train_VIS/"
+output_VIS_folder= "../segmentation_training/v6_log/galaxies_train_VIS/"
 
 input_NISP_folders = ["make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
-output_NISP_folders = ["../segmentation_training/v5/galaxies_train_NISP_H/","../segmentation_training/v5/galaxies_train_NISP_J/","../segmentation_training/v5/galaxies_train_NISP_Y/"]
+output_NISP_folders = ["../segmentation_training/v6_log/galaxies_train_NISP_H/","../segmentation_training/v6_log/galaxies_train_NISP_J/","../segmentation_training/v6_log/galaxies_train_NISP_Y/"]
 
-background_stamps_folder = "stamps/"
+background_stamps_folder = "stamps_capped_negative/"
 
 for output_folder in output_NISP_folders:
     if not os.path.exists(output_folder):
@@ -67,10 +67,10 @@ def insert_tidal_tails():
     index = 0
     for input_file_vis_sublist,input_file_nisp_h_sublist,input_file_nisp_j_sublist, input_file_nisp_y_sublist in zip(input_files_vis_splitted_by_redshift, input_files_nisp_h_splitted_by_redshift, input_files_nisp_j_splitted_by_redshift, input_files_nisp_y_splitted_by_redshift):
 
-        vis_background_image = background_stamps_folder+str(index) +"_I.fits"
-        nisp_y_background_image = background_stamps_folder+str(index) +"_Y.fits"
-        nisp_j_background_image = background_stamps_folder+str(index) +"_J.fits"
-        nisp_h_background_image = background_stamps_folder+str(index) +"_H.fits"
+        vis_background_image = background_stamps_folder+str(index) +"_I_no_negatives.fits"
+        nisp_y_background_image = background_stamps_folder+str(index) +"_Y_no_negatives.fits"
+        nisp_j_background_image = background_stamps_folder+str(index) +"_J_no_negatives.fits"
+        nisp_h_background_image = background_stamps_folder+str(index) +"_H_no_negatives.fits"
 
         # First the VIS filter
         for input_file_vis in input_file_vis_sublist:

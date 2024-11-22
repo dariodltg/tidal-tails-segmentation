@@ -59,7 +59,7 @@ imageH  = "EUC_LE1_NISP-65658-1-C_20230909T112702.000000Z_01_03_01.00.fh.MODFN.f
 number_gals = 1000
 side_pix_nir = 200
 side_pix_opt = 600
-path_input_single_ext = "./FITS-SingleFrames/single_extension_without_pedestal/" 
+path_input_single_ext = "./FITS-SingleFrames/single_extension/" 
 path_to_output = "./stamps/"
 
 

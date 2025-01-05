@@ -10,12 +10,12 @@ size_VIS = 600
 size_NISP = 200
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
-output_VIS_folder= "../segmentation_training/v6_log/galaxies_train_VIS/"
+output_VIS_folder= "../segmentation_training/v8_log/galaxies_train_VIS/"
 
 input_NISP_folders = ["make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
-output_NISP_folders = ["../segmentation_training/v6_log/galaxies_train_NISP_H/","../segmentation_training/v6_log/galaxies_train_NISP_J/","../segmentation_training/v6_log/galaxies_train_NISP_Y/"]
+output_NISP_folders = ["../segmentation_training/v8_log/galaxies_train_NISP_H/","../segmentation_training/v8_log/galaxies_train_NISP_J/","../segmentation_training/v8_log/galaxies_train_NISP_Y/"]
 
-background_stamps_folder = "stamps_capped_negative/"
+background_stamps_folder = "stamps_vis_divided_by_100/"
 
 for output_folder in output_NISP_folders:
     if not os.path.exists(output_folder):
@@ -87,7 +87,9 @@ def insert_tidal_tails():
                 fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
             except Exception as ex:
                 print(ex)
-        
+                os.remove(new_filename)
+
+        """
         for input_file_nisp_h in input_file_nisp_h_sublist:
             try:
                 hdu_sim = fits.open(input_file_nisp_h)
@@ -132,7 +134,7 @@ def insert_tidal_tails():
                 fits.writeto(new_filename,img_cutout+img_sim,hdr_cutout,overwrite=True)
             except Exception as ex:
                 print(ex)
-            
+        """    
         index = index+1
     
         

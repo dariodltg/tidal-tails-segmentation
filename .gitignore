@@ -216,3 +216,6 @@ redshift/segmentation_training/v6_log/VIS_1000imgs_v6_log
 redshift/segmentation_training/v6_linear/NISP_H_1000imgs_v6_linear
 redshift/segmentation_training/v6_linear/NISP_Y_1000imgs_v6_linear
 redshift/segmentation_training/v6_linear/NISP_J_1000imgs_v6_linear
+redshift/segmentation_training/v7_log/
+redshift/segmentation_training/v8_log/
+redshift/dataset_generation/stamps_vis_divided_by_100/

@@ -219,3 +219,5 @@ redshift/segmentation_training/v6_linear/NISP_J_1000imgs_v6_linear
 redshift/segmentation_training/v7_log/
 redshift/segmentation_training/v8_log/
 redshift/dataset_generation/stamps_vis_divided_by_100/
+redshift/dataset_generation/lsb_optimized_jan25/
+redshift/dataset_generation/lsb_optimized_jan25_without_pedestal/

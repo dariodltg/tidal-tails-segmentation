@@ -52,10 +52,9 @@ redshifts=(0.05 0.1 0.15 0.2 0.25 0.4 0.6 0.8 1) #range of possible redshifts
 phys_scales=(0.977 1.844 2.614 3.300 3.910 5.373 6.685 7.508 8.008) #range of physical scales at each redshift
 comparing_to_05=(1 0.530 0.347 0.296 0.250 0.182 0.146 0.130 0.122) #comparing physical scales to the one at z = 0.05
 number_galaxies=1000 #number of systems (galaxy + tidal stream) to be created
-
+percent_min_flux_stream=0.1
+percent_max_flux_stream=5
 #TIDAL STREAM LIMITS
-mag_stream_bright=19.5
-mag_stream_faint=20.5
 min_rr_stream=5 #[pix in VIS]
 max_rr_stream=120 #[pix in VIS]
 min_width_stream=15 #[pix in VIS], check also min_rr_stream 
@@ -180,12 +179,49 @@ do
                 #=========================
                 
                 #TIDAL STREAM==============
-                
-                #randomizing the stream's magnitude
-                tmp=`shuf -i 1-1000 -n 1` #obtaining one number between 1 (to avoid numerical errors for the axis ratio) and 1000
-                offset_from_bright_mag1=$(echo "scale=3; ($tmp/1000)" | bc) #dividing the previously obtained number by 1000
-                offset_from_bright_mag2=$(astarithmetic -q $mag_stream_faint $mag_stream_bright - $offset_from_bright_mag1 x)
-                mag_stream=$(astarithmetic -q $mag_stream_bright $offset_from_bright_mag2 +)
+            
+                # Calcular el flujo del bulbo
+                echo "Mag Bulge: $mag_bulge"
+                aux_flux_bulge=$(astarithmetic -q $mag_bulge $zeropoint - -2.5 / float32)
+                echo "Aux Flux Bulge: $aux_flux_bulge"
+                flux_bulge=$(astarithmetic -q 10 $aux_flux_bulge pow)
+                echo "Flux Bulge: $flux_bulge"
+
+                echo "Mag Disk: $mag_disk"
+                # Calcular el flujo del disco
+                aux_flux_disk=$(astarithmetic -q $mag_disk $zeropoint - -2.5 / float32)
+                echo "Aux Flux Disk: $aux_flux_bulge"
+                flux_disk=$(astarithmetic -q 10 $aux_flux_disk pow)
+
+                echo "Flux Disk: $flux_disk"
+
+                # Compute B/T ratio
+                BT_ratio=$(astarithmetic ${flux_bulge} ${flux_disk} + ${flux_bulge} / --quiet)
+                echo "B/T Ratio: $BT_ratio"
+
+                # Generate a random percentage within the given range
+                rand_percent=$(echo "scale=2; $percent_min_flux_stream + (($percent_max_flux_stream - $percent_min_flux_stream) * $RANDOM / 32767)" | bc)
+                echo "Random Percent: $rand_percent"
+
+                # Compute flux_stream as a random fraction of the total flux
+                flux_galaxy=$(astarithmetic ${flux_bulge} ${flux_disk} + --quiet)
+                echo "Flux Galaxy: $flux_galaxy"
+
+                # Calcular el porcentaje como fracción decimal
+                percent_fraction=$(astarithmetic -q $rand_percent 100 /)
+                # Multiplicar el flujo total por la fracción calculada
+                flux_stream=$(astarithmetic -q $flux_galaxy $percent_fraction x)
+                echo "Flux Stream: $flux_stream"
+
+                log_flux=$(astarithmetic -q $flux_stream log10)
+                echo "Log Flux: $log_flux"
+
+                scaled_flux=$(astarithmetic -q $log_flux -2.5 x)
+                echo "Scaled Flux: $scaled_flux"
+
+                echo "Zeropoint: $zeropoint"  
+                mag_stream=$(astarithmetic -q $scaled_flux $zeropoint +)
+                echo "Magnitude Stream: $mag_stream"
                 
                 #as the position of tidal tails is specified in the initial conditions in units of VIS pixels
                 ratio_pixels=$(astarithmetic -q $pix_scale $pix_scale_VIS /)
@@ -234,7 +270,7 @@ do
                 
                 #starting the output catalog
                 cat_output="$bdir_check_cat"/stream_characteristics_"$ii".txt
-            	echo "#galaxy_number z band mag_bulge re_bulge re_bulge_pix ar_bulge pa_bulge mag_disk re_disk re_disk_pix ar_disk pa_disk mag_stream rr_stream width_stream azimuthal_width ar pa ini_angle end_angle width_feature" > "$cat_output"
+            	echo "#galaxy_number z band mag_bulge re_bulge re_bulge_pix ar_bulge pa_bulge mag_disk re_disk re_disk_pix ar_disk pa_disk mag_stream rr_stream width_stream azimuthal_width ar pa ini_angle end_angle width_feature BT_ratio" > "$cat_output"
             	
             fi
              
@@ -399,7 +435,7 @@ do
     	    mag_stream_cat=$(LC_NUMERIC="en_US.UTF-8" printf "%5.2f" $mag_stream)
             rr_stream_pix_cat=$(LC_NUMERIC="en_US.UTF-8" printf "%5.2f" $rr_stream_pix)
             width_stream_pix_cat=$(LC_NUMERIC="en_US.UTF-8" printf "%5.2f" $width_stream_pix) 
-            echo "$ii $zz_cat $band $mag_bulge_cat $re_bulge_cat $re_bulge_pix_cat $ar_bulge_cat $pa_bulge_cat $mag_disk_cat $re_disk_cat $re_disk_pix_cat $ar_disk_cat $pa_disk_cat $mag_stream_cat $rr_stream_pix_cat $width_stream_pix_cat $azimuthal_width $ar_stream $pa_stream $ini_angle $end_angle $width_feature" >> "$cat_output" 
+            echo "$ii $zz_cat $band $mag_bulge_cat $re_bulge_cat $re_bulge_pix_cat $ar_bulge_cat $pa_bulge_cat $mag_disk_cat $re_disk_cat $re_disk_pix_cat $ar_disk_cat $pa_disk_cat $mag_stream_cat $rr_stream_pix_cat $width_stream_pix_cat $azimuthal_width $ar_stream $pa_stream $ini_angle $end_angle $width_feature $BT_ratio" >> "$cat_output" 
         
         done
         

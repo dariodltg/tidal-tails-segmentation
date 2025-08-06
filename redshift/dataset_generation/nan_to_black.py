@@ -8,7 +8,7 @@ paths = ["make_mock_tidal_streams_VIS/", "make_mock_tidal_streams_NISP_H/", "mak
 
 def nan_to_black():
     for path in paths:
-        print("Processing nan pixels to black in path" + path)
+        print("Processing nan pixels to black in path: " + path)
         for file in glob.glob(path+"galaxy_and_stream_convolved*"):
             with fits.open(file, mode="update") as hdul:  # Open fits file
                 data = hdul[1].data

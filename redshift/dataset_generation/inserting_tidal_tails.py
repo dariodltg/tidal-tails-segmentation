@@ -8,7 +8,7 @@ from astropy.io import fits
 
 size_VIS = 600
 size_NISP = 200
-background_images_path = "lsb_optimized_jan25_without_pedestal/"
+background_images_path = "lsb_optimized_jan25_without_pedestal_by_mask/"
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
 output_VIS_folder= "../segmentation_training/v10_log/galaxies_train_VIS/"

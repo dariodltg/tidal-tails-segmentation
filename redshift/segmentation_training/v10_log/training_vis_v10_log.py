@@ -204,7 +204,7 @@ unet.to(device)
 
 # %%
 #Imprimimos la arquitectura de la red
-summary(unet, (1, 608, 608), device)
+#summary(unet, (1, 608, 608), device)
 
 # %%
 #Comprobamos que hemos construido la arquitectura de la red correctamente cargando una imagen del dataset

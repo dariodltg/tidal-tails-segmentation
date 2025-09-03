@@ -22,18 +22,18 @@ from torchmetrics import Dice, JaccardIndex
 from torchsummary import summary
 
 # %%
-hiperparametros = {'nombre_notebook': 'Training_VIS_1000imgs_v10_log.ipynb',
-                    'nombre_experimento' : 'Training_VIS_1000imgs_v10_log',
-                    'nombre_mejor_modelo_a_guardar' : 'VIS_1000imgs_v10_log_no_aug',
+hiperparametros = {'nombre_notebook': 'Training_NISP_Y_1000imgs_v10_log_no_aug.ipynb',
+                    'nombre_experimento' : 'Training_NISP_Y_1000imgs_v10_log_no_aug',
+                    'nombre_mejor_modelo_a_guardar' : 'NISP_Y_1000imgs_v10_log_no_aug',
                     'device' : torch.device("cuda:1" if torch.cuda.is_available() else "cpu"),
-                    'ruta_galaxias' : 'galaxies_train_VIS/galaxy_and_stream_convolved*.fits',
-                    'ruta_mascaras' : '../masks_train_VIS/mask_',
-                    'ruta_galaxias_test' : 'galaxies_test_VIS/galaxy_and_stream_convolved*.fits',
-                    'ruta_mascaras_test' : '../masks_train_VIS/mask_',
-                    'ancho_imagen_original' : 600,
-                    'alto_imagen_original' : 600,
-                    'ancho_imagen_deseado' : 608,
-                    'alto_imagen_deseado' : 608,
+                    'ruta_galaxias' : 'galaxies_train_NISP_Y/galaxy_and_stream_convolved*.fits',
+                    'ruta_mascaras' : '../masks_train_NISP_Y/mask_',
+                    'ruta_galaxias_test' : 'galaxies_test_NISP_Y/galaxy_and_stream_convolved*.fits',
+                    'ruta_mascaras_test' : '../masks_train_NISP_Y/mask_',
+                    'ancho_imagen_original' : 200,
+                    'alto_imagen_original' : 200,
+                    'ancho_imagen_deseado' : 224,
+                    'alto_imagen_deseado' : 224,
                     'epocas' : 100,
                     'lr' : 1e-3,
                     'regularizacion_ridge' : 1e-5,
@@ -208,7 +208,7 @@ unet.to(device)
 
 # %%
 #Comprobamos que hemos construido la arquitectura de la red correctamente cargando una imagen del dataset
-input_item, label_item = train_dataset.__getitem__(0)
+input_item, label_item = train_dataset.__getitem__(35)
 input_item = input_item.reshape((1,1,hiperparametros['ancho_imagen_deseado'],hiperparametros['alto_imagen_deseado']))
 label_item = label_item.reshape((1,1,hiperparametros['ancho_imagen_deseado'],hiperparametros['alto_imagen_deseado']))
 output_item = unet(input_item.to(device)).cpu().detach().squeeze()
@@ -235,7 +235,7 @@ mejor_loss = 100000000
 dice = Dice(num_classes=2, average='macro', ignore_index=0)
 dice.to(device)
 # Inicializamos la métrica de IoU
-iou = JaccardIndex(task='multiclass', num_classes=2, average='macro', ignore_index=0)
+iou = JaccardIndex(task='multiclass', num_classes=2, average='none', ignore_index=0)
 iou.to(device)
 
 train_loss_list = []
@@ -259,7 +259,7 @@ for epoch in range(hiperparametros['epocas']):
         targets = torch.squeeze(labels, dim=1).type(torch.LongTensor).to(device)
         loss = criterio_loss(outputs, targets)
         valor_dice = dice(outputs, targets)
-        valor_iou = iou(outputs, targets)
+        valor_iou = iou(outputs, targets)[1]
         loss_medio_train += loss.item()
         dice_medio_train += valor_dice.item()
         iou_medio_train += valor_iou.item()
@@ -284,7 +284,7 @@ for epoch in range(hiperparametros['epocas']):
         targets = torch.squeeze(labels, dim=1).type(torch.LongTensor).to(device)        
         loss = criterio_loss(outputs, targets)
         valor_dice = dice(outputs, targets)
-        valor_iou = iou(outputs, targets)
+        valor_iou = iou(outputs, targets)[1]
         loss_medio_valid += loss.item()
         dice_medio_valid += valor_dice.item()
         iou_medio_valid += valor_iou.item()

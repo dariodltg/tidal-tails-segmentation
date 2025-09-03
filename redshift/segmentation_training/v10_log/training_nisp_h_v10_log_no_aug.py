@@ -22,14 +22,14 @@ from torchmetrics import Dice, JaccardIndex
 from torchsummary import summary
 
 # %%
-hiperparametros = {'nombre_notebook': 'Training_NISP_J_1000imgs_v10_log_no_aug.ipynb',
-                    'nombre_experimento' : 'Training_NISP_J_1000imgs_v10_log_no_aug',
-                    'nombre_mejor_modelo_a_guardar' : 'NISP_J_1000imgs_v10_log_no_aug',
+hiperparametros = {'nombre_notebook': 'Training_NISP_H_1000imgs_v10_log_no_aug.ipynb',
+                    'nombre_experimento' : 'Training_NISP_H_1000imgs_v10_log_no_aug',
+                    'nombre_mejor_modelo_a_guardar' : 'NISP_H_1000imgs_v10_log_no_aug',
                     'device' : torch.device("cuda:1" if torch.cuda.is_available() else "cpu"),
-                    'ruta_galaxias' : 'galaxies_train_NISP_J/galaxy_and_stream_convolved*.fits',
-                    'ruta_mascaras' : '../masks_train_NISP_J/mask_',
-                    'ruta_galaxias_test' : 'galaxies_test_NISP_J/galaxy_and_stream_convolved*.fits',
-                    'ruta_mascaras_test' : '../masks_train_NISP_J/mask_',
+                    'ruta_galaxias' : 'galaxies_train_NISP_H/galaxy_and_stream_convolved*.fits',
+                    'ruta_mascaras' : '../masks_train_NISP_H/mask_',
+                    'ruta_galaxias_test' : 'galaxies_test_NISP_H/galaxy_and_stream_convolved*.fits',
+                    'ruta_mascaras_test' : '../masks_train_NISP_H/mask_',
                     'ancho_imagen_original' : 200,
                     'alto_imagen_original' : 200,
                     'ancho_imagen_deseado' : 224,

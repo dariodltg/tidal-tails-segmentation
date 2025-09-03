@@ -235,7 +235,7 @@ mejor_loss = 100000000
 dice = Dice(num_classes=2, average='macro', ignore_index=0)
 dice.to(device)
 # Inicializamos la métrica de IoU
-iou = JaccardIndex(task='multiclass', num_classes=2, average='macro', ignore_index=0)
+iou = JaccardIndex(task='multiclass', num_classes=2, average='none', ignore_index=0)
 iou.to(device)
 
 train_loss_list = []
@@ -259,7 +259,7 @@ for epoch in range(hiperparametros['epocas']):
         targets = torch.squeeze(labels, dim=1).type(torch.LongTensor).to(device)
         loss = criterio_loss(outputs, targets)
         valor_dice = dice(outputs, targets)
-        valor_iou = iou(outputs, targets)
+        valor_iou = iou(outputs, targets)[1]
         loss_medio_train += loss.item()
         dice_medio_train += valor_dice.item()
         iou_medio_train += valor_iou.item()
@@ -284,7 +284,7 @@ for epoch in range(hiperparametros['epocas']):
         targets = torch.squeeze(labels, dim=1).type(torch.LongTensor).to(device)        
         loss = criterio_loss(outputs, targets)
         valor_dice = dice(outputs, targets)
-        valor_iou = iou(outputs, targets)
+        valor_iou = iou(outputs, targets)[1]
         loss_medio_valid += loss.item()
         dice_medio_valid += valor_dice.item()
         iou_medio_valid += valor_iou.item()

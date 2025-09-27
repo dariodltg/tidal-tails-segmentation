@@ -51,7 +51,7 @@ bands="VIS NISP_Y NISP_J NISP_H"
 redshifts=(0.05 0.1 0.15 0.2 0.25 0.4 0.6 0.8 1) #range of possible redshifts
 phys_scales=(0.977 1.844 2.614 3.300 3.910 5.373 6.685 7.508 8.008) #range of physical scales at each redshift
 comparing_to_05=(1 0.530 0.347 0.296 0.250 0.182 0.146 0.130 0.122) #comparing physical scales to the one at z = 0.05
-number_galaxies=10 #number of systems (galaxy + tidal stream) to be created
+number_galaxies=1000 #number of systems (galaxy + tidal stream) to be created
 percent_min_flux_stream=0.1
 percent_max_flux_stream=5
 #TIDAL STREAM LIMITS
@@ -64,14 +64,14 @@ max_azimuthal_width=180 #degrees
 sigma_over_noise=1.2
 
 #BULGE LIMITS
-mag_bulge_bright_ini=14.5
-mag_bulge_faint_ini=17.5
+mag_bulge_bright_ini=17
+mag_bulge_faint_ini=21
 re_bulge_min_ini=1 #[kpc]
 re_bulge_max_ini=6 #[kpc]
 
 #DISK_LIMITS
-mag_disk_bright_ini=14.5
-mag_disk_faint_ini=17.5
+mag_disk_bright_ini=17
+mag_disk_faint_ini=21
 re_disk_min_ini=2 #[kpc]
 re_disk_max_ini=6 #[kpc]
 
@@ -144,8 +144,8 @@ do
             
                 #GALAXY BULGE=============
                 #=to obtain a 2-decimal number
-                mag_bulge_bright=$(astarithmetic -q $mag_bulge_bright_ini 100 x int32)
-                mag_bulge_faint=$(astarithmetic -q $mag_bulge_faint_ini 100 x int32)
+                mag_bulge_bright=$(astarithmetic -q $mag_bulge_bright_ini int32 100 x)
+                mag_bulge_faint=$(astarithmetic -q $mag_bulge_faint_ini int32 100 x)
                 mag_bulge=`shuf -i $mag_bulge_bright-$mag_bulge_faint -n 1` 
                 mag_bulge=$(astarithmetic -q $mag_bulge float32 100 /)
                 #=to obtain a 2-decimal number
@@ -161,8 +161,8 @@ do
                 
                 #GALAXY DISK=============
                 #=to obtain a 2-decimal number
-                mag_disk_bright=$(astarithmetic -q $mag_disk_bright_ini 100 x int32)
-                mag_disk_faint=$(astarithmetic -q $mag_disk_faint_ini 100 x int32)
+                mag_disk_bright=$(astarithmetic -q $mag_disk_bright_ini int32 100 x)
+                mag_disk_faint=$(astarithmetic -q $mag_disk_faint_ini int32 100 x)
                 mag_disk=`shuf -i $mag_disk_bright-$mag_disk_faint -n 1` 
                 mag_disk=$(astarithmetic -q $mag_disk float32 100 /)
                 #=to obtain a 2-decimal number
@@ -279,8 +279,8 @@ do
             re_disk_pix=$(astarithmetic -q $re_disk $kpc_to_pix x)
             
             cat="$bdir"/cat_"$ii"_"$zz"_"$band".txt
-            echo "0 $x_cen $y_cen 1 $re_bulge_pix         4 $pa_bulge         $ar_bulge        $mag_bulge    50" >   "$cat"     # Bulge
-            echo "1 $x_cen $y_cen 1 $re_disk_pix          1 $pa_disk          $ar_disk         $mag_disk     50" >>  "$cat"     # Disk
+            echo "0 $x_cen $y_cen 1 $re_bulge_pix         4 $pa_bulge         $ar_bulge        $mag_bulge    5" >   "$cat"     # Bulge
+            echo "1 $x_cen $y_cen 1 $re_disk_pix          1 $pa_disk          $ar_disk         $mag_disk     5" >>  "$cat"     # Disk
                    
             galaxy=galaxy_"$ii"_"$zz"_"$band".fits
             echo astmkprof "$cat" --mergedsize=$output_size,$output_size --oversample=1 --zeropoint=$zeropoint --type="float32" --output="$bdir"/"$galaxy"

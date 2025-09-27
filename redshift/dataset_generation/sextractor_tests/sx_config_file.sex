@@ -1,0 +1,87 @@
+# Default configuration file for SExtractor V1.2b14 - > 2.0
+# EB 23/07/98
+# Added environment variables for Starlink release.
+# PWD 25/11/98
+# (*) indicates parameters which can be omitted from this config file.
+
+#-------------------------------- Catalog ------------------------------------
+
+CATALOG_NAME    detections.cat    # name of the output catalog
+CATALOG_TYPE    ASCII_HEAD  # "NONE","ASCII_HEAD","ASCII","FITS_1.0"
+                # "FITS_LDAC" or "ASCII_SKYCAT"
+
+PARAMETERS_NAME  default.param  
+                                # name of the file containing catalog contents
+
+#------------------------------- Extraction ----------------------------------
+
+DETECT_TYPE CCD     # "CCD" or "PHOTO" (*)
+#FLAG_IMAGE flag        # filename for an input FLAG-image
+DETECT_MINAREA  10      # minimum number of pixels above threshold
+DETECT_THRESH   2       # <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+ANALYSIS_THRESH 2       # <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+
+FILTER      Y       # apply filter for detection ("Y" or "N")?
+FILTER_NAME gauss_3.0_5x5.conv  ##$EXTRACTOR_DIR/config/gauss_3.0_5x5.conv  
+                                # name of the file containing the filter
+
+DEBLEND_NTHRESH 64      # Number of deblending sub-thresholds
+DEBLEND_MINCONT 0.0001      # Minimum contrast parameter for deblending
+
+CLEAN       Y       # Clean spurious detections? (Y or N)?
+CLEAN_PARAM 1.0     # Cleaning efficiency
+
+MASK_TYPE   CORRECT     # type of detection MASKing: can be one of
+                # "NONE", "BLANK" or "CORRECT"
+
+#------------------------------ Photometry -----------------------------------
+
+PHOT_APERTURES  15.0        # MAG_APER aperture diameter(s) in pixels
+PHOT_AUTOPARAMS 1.0, 1.0    # MAG_AUTO parameters: <Kron_fact>,<min_radius>
+PHOT_AUTOAPERS  1.0,1.0               # MAG_AUTO minimum diameters for detection,estimation
+PHOT_FLUXFRAC   0.5           # CALCULATE RADII CONTAINING 20,50,80% OF TOTAL FLUX
+
+SATUR_LEVEL 30000.0     # level (in ADUs) at which arises saturation
+
+MAG_ZEROPOINT   25.96       # magnitude zero-point
+MAG_GAMMA   4.0     # gamma of emulsion (for photographic scans)
+GAIN        2.6     # detector gain in e-/ADU.
+PIXEL_SCALE 0.1     # size of pixel in arcsec (0=use FITS WCS info).
+
+#------------------------- Star/Galaxy Separation ----------------------------
+
+SEEING_FWHM 0.2     # stellar FWHM in arcsec
+STARNNW_NAME    default.nnw     # Neural-Network_Weight table filename
+
+#------------------------------ Background -----------------------------------
+
+#BACK_SIZE  64      # Background mesh: <size> or <width>,<height>
+BACK_SIZE   256     # Background mesh: <size> or <width>,<height>
+#BACK_FILTERSIZE    6       # Background filter: <size> or <width>,<height>
+BACK_FILTERSIZE 2       # Background filter: <size> or <width>,<height>
+
+#BACKPHOTO_TYPE GLOBAL      # can be "GLOBAL" or "LOCAL" (*)
+BACKPHOTO_TYPE  LOCAL       # can be "GLOBAL" or "LOCAL" (*)
+BACKPHOTO_THICK 64      # thickness of the background LOCAL annulus (*)
+#BACKPHOTO_THICK    10      # thickness of the background LOCAL annulus (*)
+
+#------------------------------ Check Image ----------------------------------
+
+CHECKIMAGE_TYPE SEGMENTATION # can be one of "NONE", "BACKGROUND",
+                # "MINIBACKGROUND", "-BACKGROUND", "OBJECTS",
+                # "-OBJECTS", "SEGMENTATION", "APERTURES",
+                # or "FILTERED" (*)
+CHECKIMAGE_NAME segmentation.fits # Filename for the check-image (*)
+
+#--------------------- Memory (change with caution!) -------------------------
+
+MEMORY_OBJSTACK 65000       # number of objects in stack
+MEMORY_PIXSTACK 500000      # number of pixels in stack
+MEMORY_BUFSIZE  1024        # number of lines in buffer
+
+#----------------------------- Miscellaneous ---------------------------------
+
+#VERBOSE_TYPE   NORMAL      # can be "QUIET", "NORMAL" or "FULL" (*)
+#WEIGHT_IMAGE    IMAGES_UDS/uds01_wfc3_f160w_060mas_mosaic_v0.2_wht.fits
+#WEIGHT_TYPE    MAP_WEIGHT      # variance map derived from external weight map.
+#----------------q--------------- New Stuff -----------------------------------

@@ -176,14 +176,14 @@ def main():
     # Configuration - MODIFY ACCORDING TO YOUR NEEDS
     # Define pairs of (input_directory, output_directory)
     directory_pairs = [
-        ("../../segmentation_training/v11_log/galaxies_train_VIS_with_pedestal", 
-         "../../segmentation_training/v11_log/galaxies_train_VIS_segmented_sextractor"),
-        ("../../segmentation_training/v11_log/galaxies_train_NISP_H_with_pedestal", 
-         "../../segmentation_training/v11_log/galaxies_train_NISP_H_segmented_sextractor"),
-        ("../../segmentation_training/v11_log/galaxies_train_NISP_J_with_pedestal", 
-         "../../segmentation_training/v11_log/galaxies_train_NISP_J_segmented_sextractor"),
-        ("../../segmentation_training/v11_log/galaxies_train_NISP_Y_with_pedestal", 
-         "../../segmentation_training/v11_log/galaxies_train_NISP_Y_segmented_sextractor"),
+        ("../../segmentation_training/v13_log/galaxies_train_VIS_with_pedestal", 
+         "../../segmentation_training/v13_log/galaxies_train_VIS_segmented_sextractor"),
+        ("../../segmentation_training/v13_log/galaxies_train_NISP_H_with_pedestal", 
+         "../../segmentation_training/v13_log/galaxies_train_NISP_H_segmented_sextractor"),
+        ("../../segmentation_training/v13_log/galaxies_train_NISP_J_with_pedestal", 
+         "../../segmentation_training/v13_log/galaxies_train_NISP_J_segmented_sextractor"),
+        ("../../segmentation_training/v13_log/galaxies_train_NISP_Y_with_pedestal", 
+         "../../segmentation_training/v13_log/galaxies_train_NISP_Y_segmented_sextractor"),
         # Add more pairs as needed
     ]
     

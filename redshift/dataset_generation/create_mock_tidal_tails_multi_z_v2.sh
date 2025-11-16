@@ -45,13 +45,15 @@ zeropoint_VIS=23.896
 zeropoint_NISP=29.9
 pix_scale_VIS=0.1
 pix_scale_NISP=0.3
-bckg_mag_VIS=29.5
-bckg_mag_NISP=28.5
+bckg_mag_VIS=31.19
+bckg_mag_NISP_H=29.54
+bckg_mag_NISP_Y=29.42
+bckg_mag_NISP_J=29.48
 bands="VIS NISP_Y NISP_J NISP_H"
 redshifts=(0.05 0.1 0.15 0.2 0.25 0.4 0.6 0.8 1) #range of possible redshifts
 phys_scales=(0.977 1.844 2.614 3.300 3.910 5.373 6.685 7.508 8.008) #range of physical scales at each redshift
 comparing_to_05=(1 0.530 0.347 0.296 0.250 0.182 0.146 0.130 0.122) #comparing physical scales to the one at z = 0.05
-number_galaxies=10 #number of systems (galaxy + tidal stream) to be created
+number_galaxies=1000 #number of systems (galaxy + tidal stream) to be created
 percent_min_flux_stream=0.1
 percent_max_flux_stream=5
 #TIDAL STREAM LIMITS
@@ -109,7 +111,7 @@ do
                 "NISP_Y")
                 pix_scale=$pix_scale_NISP
                 zeropoint=$zeropoint_NISP
-                bckg_mag=$bckg_mag_NISP
+                bckg_mag=$bckg_mag_NISP_Y
                 psf=$psf_NISP_Y
                 bdir=$bdir_NISP_Y
                 output_size=$output_size_NISP
@@ -119,7 +121,7 @@ do
                 "NISP_J")
                 pix_scale=$pix_scale_NISP
                 zeropoint=$zeropoint_NISP
-                bckg_mag=$bckg_mag_NISP               
+                bckg_mag=$bckg_mag_NISP_J               
                 psf=$psf_NISP_J
                 bdir=$bdir_NISP_J
                 output_size=$output_size_NISP
@@ -129,7 +131,7 @@ do
                 "NISP_H")
                 pix_scale=$pix_scale_NISP
                 zeropoint=$zeropoint_NISP
-                bckg_mag=$bckg_mag_NISP
+                bckg_mag=$bckg_mag_NISP_H
                 psf=$psf_NISP_H
                 bdir=$bdir_NISP_H
                 output_size=$output_size_NISP

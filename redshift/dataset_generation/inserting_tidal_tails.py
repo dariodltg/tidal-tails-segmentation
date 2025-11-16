@@ -11,11 +11,11 @@ size_NISP = 200
 background_images_path = "lsb_optimized_jan25/"
 
 input_VIS_folder = "make_mock_tidal_streams_VIS/"
-output_VIS_folder= "../segmentation_training/v11_log/galaxies_train_VIS_with_pedestal/"
+output_VIS_folder= "../segmentation_training/v13_log/galaxies_train_VIS_with_pedestal/"
 background_VIS_image = "EUC_VIS_LSB_ObsID_2706.fits"
 
 input_NISP_folders = ["make_mock_tidal_streams_NISP_H/", "make_mock_tidal_streams_NISP_J/", "make_mock_tidal_streams_NISP_Y/"]
-output_NISP_folders = ["../segmentation_training/v11_log/galaxies_train_NISP_H_with_pedestal/","../segmentation_training/v11_log/galaxies_train_NISP_J_with_pedestal/","../segmentation_training/v11_log/galaxies_train_NISP_Y_with_pedestal/"]
+output_NISP_folders = ["../segmentation_training/v13_log/galaxies_train_NISP_H_with_pedestal/","../segmentation_training/v13_log/galaxies_train_NISP_J_with_pedestal/","../segmentation_training/v13_log/galaxies_train_NISP_Y_with_pedestal/"]
 background_NISP_images = ["EUC_NIR_H_LSB_ObsID_2706.fits",
                           "EUC_NIR_J_LSB_ObsID_2706.fits",
                           "EUC_NIR_Y_LSB_ObsID_2706.fits"]
